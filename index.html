@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Per Te</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div id="login-screen" style="text-align: center; margin-top: 100px; padding: 20px;">
+        <h3>Accesso Riservato</h3>
+        <input type="password" id="pass-input" placeholder="Inserisci password...">
+        <button onclick="controllaPassword()">Entra</button>
+    </div>
+
+    <div id="main-app" style="display: none;">
+        
+<section id="home-tab" class="tab-content active">
+    <div class="hero">
+        <span class="heart-icon">❤️</span>
+        <h1>Ciao amore!</h1>
+        
+        <div class="quote-container">
+            <p id="quote-text">Caricamento...</p>
+        </div>
+
+        <div class="gallery-container">
+            <h3>Il nostro ricordo del cuore</h3>
+            <img id="daily-photo" src="https://picsum.photos/400/300?random=1" alt="Foto ricordo">
+        </div>
+
+        <div class="goal-container">
+            <h3>Obiettivo della settimana ✨</h3>
+            <p id="goal-text">Caricamento...</p>
+            <div class="checkbox-wrapper">
+            <input type="checkbox" id="goal-check" onclick="salvaStatoObiettivo()">
+            <label for="goal-check" class="goal-label">Fatto!</label>
+            </div>
+</div>
+    </div>
+</section>
+
+  <section id="uni-tab" class="tab-content">
+    <div class="header-container">
+    <h1>Traguardi Universitari 🎓</h1>
+    </div>
+    
+    <div class="wreath-container" id="wreath"></div>
+    <div class="wreath-container" id="wreath"></div>
+
+   <div class="tesi-wrapper">
+    <div class="leaf tesi-circle" id="tesi-pallino"></div>
+    <label class="checkbox-laurea">
+        <!-- Esegue prima la tua funzione, poi lancia i fuochi -->
+        <input type="checkbox" id="check-tesi" onchange="segnaLaurea(); celebraLaurea(this)" disabled> Laureata!
+    </label>
+</div>
+    
+    <div class="uni-form">
+    <input type="text" id="exam-name" placeholder="Nome esame">
+    <input type="number" id="exam-cfu" placeholder="CFU">
+    <input type="number" id="exam-grade" placeholder="Voto" min="18" max="30">
+    <button onclick="aggiungiEsame()" class="btn-add">Aggiungi Esame</button>
+</div>
+
+    <ul id="exam-list" class="exam-list"></ul>
+
+    <!-- Dashboard Statistiche -->
+    <div class="stats-dashboard">
+        <div class="stat-box">
+            <span class="stat-label">Esami Superati</span>
+            <span id="stats-esami" class="stat-value">0 / 22</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">CFU Totali</span>
+            <span id="stats-cfu" class="stat-value">0 / 180</span>
+        </div>
+        <div class="stat-box media-box">
+            <span class="stat-label">Media Ponderata</span>
+            <span id="stats-media" class="stat-value">0.00</span>
+        </div>
+    </div>
+    
+    <button onclick="resetEsami()" class="btn-reset">Reset</button>
+
+<div id="toast-messaggio" class="toast">
+        <span id="toast-text"></span>
+        <button class="btn-close-toast" onclick="chiudiToast()">✖</button>
+    </div>
+    
+</section>
+
+<!-- Struttura del Life Hub -->
+
+<section id="tracker-tab" class="tab-content">
+    <div class="life-hub">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="cambiaSottoTab('musica', this)">Musica</button>
+            <button class="tab-btn" onclick="cambiaSottoTab('calendario', this)">Calendario</button>
+            <button class="tab-btn" onclick="cambiaSottoTab('allenamenti', this)">Allenamenti</button>
+            <button class="tab-btn" onclick="cambiaSottoTab('todolist', this)">To-Do List</button>
+        </div>
+
+        <div id="musica" class="tab-content-interno active">
+            <h2>Il nostro Jukebox</h2>
+            <ul id="playlist" class="playlist"></ul>
+            <div id="player-container" class="player-hidden">
+                <img id="album-art" src="" alt="Album Art">
+                <h3 id="song-title">Nome Canzone</h3>
+                <audio id="audio-player"></audio>
+                <input type="range" id="progress-bar" value="0">
+                <div class="controls">
+                    <button onclick="skip(-10)"><i class="fas fa-backward"></i></button>
+                    <button onclick="togglePlay()" id="play-pause-btn"><i class="fas fa-pause"></i></button>
+                    <button onclick="stopSong()"><i class="fas fa-stop"></i></button>
+                    <button onclick="skip(10)"><i class="fas fa-forward"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="calendario" class="tab-content-interno">
+    <h2>Calendario</h2>
+    <div class="calendar-wrapper">
+        <div class="calendar-header">
+            <button id="prev-month" onclick="cambiaMese(-1)"><i class="fas fa-chevron-left"></i></button>
+            <h3 id="month-year">Mese Anno</h3>
+            <button id="next-month" onclick="cambiaMese(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="calendar-grid">
+            <div class="weekdays">
+                <div>Lun</div><div>Mar</div><div>Mer</div><div>Gio</div><div>Ven</div><div>Sab</div><div>Dom</div>
+            </div>
+            <div class="days" id="calendar-days">
+                </div>
+        </div>
+    </div>
+
+    <div id="sezione-note" class="note-hidden">
+    <h4 id="data-selezionata-nota">Seleziona un giorno</h4>
+    <textarea id="testo-nota" placeholder="Scrivi qui i tuoi promemoria o appunti per questa giornata..."></textarea>
+    
+    <div class="color-picker-container">
+        <span class="testo-colore">Colore:</span>
+        <input type="radio" name="colore-nota" value="#e76f51" id="c-red" checked> 
+        <label for="c-red" style="background-color: #e76f51;"></label>
+        
+        <input type="radio" name="colore-nota" value="#2a9d8f" id="c-green"> 
+        <label for="c-green" style="background-color: #2a9d8f;"></label>
+        
+        <input type="radio" name="colore-nota" value="#e9c46a" id="c-yellow"> 
+        <label for="c-yellow" style="background-color: #e9c46a;"></label>
+        
+        <input type="radio" name="colore-nota" value="#264653" id="c-blue"> 
+        <label for="c-blue" style="background-color: #264653;"></label>
+
+        <input type="radio" name="colore-nota" value="#ffb3c6" id="c-pink"> 
+        <label for="c-pink" style="background-color: #ffb3c6;"></label>
+
+        <input type="radio" name="colore-nota" value="#e63946" id="c-rosso"> 
+        <label for="c-rosso" style="background-color: #e63946;"></label>
+    </div>
+
+    <button onclick="salvaNota()" class="btn-salva-nota">Salva Nota</button>
+    
+    <div id="lista-note-giorno" class="lista-note-container">
+        </div>
+</div>
+
+    <div id="lista-note-giorno" class="lista-note-container">
+    </div>
+</div>
+
+        <div id="allenamenti" class="tab-content-interno">
+    <h2>Salute e allenamenti</h2>
+    
+    <div class="weekly-tracker-container">
+        <h3>Obiettivo Settimanale</h3>
+        <p class="tracker-subtitle">Clicca sul giorno quando completi un allenamento!</p>
+        <div class="days-row">
+            <button class="day-circle" onclick="toggleAllenamento(this)">Lun</button>
+            <button class="day-circle" onclick="toggleAllenamento(this)">Mar</button>
+            <button class="day-circle" onclick="toggleAllenamento(this)">Mer</button>
+            <button class="day-circle" onclick="toggleAllenamento(this)">Gio</button>
+            <button class="day-circle" onclick="toggleAllenamento(this)">Ven</button>
+            <button class="day-circle" onclick="toggleAllenamento(this)">Sab</button>
+            <button class="day-circle" onclick="toggleAllenamento(this)">Dom</button>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-square">
+            <h4><i class="fas fa-dumbbell"></i> Mensili</h4>
+            <div class="stat-number" id="contatore-mensile">0</div>
+            <p>Allenamenti questo mese</p>
+        </div>
+
+        <!-- Quadrato 2: Acqua (Aggiornato) -->
+<div class="stat-square">
+    <h4><i class="fas fa-tint"></i> Acqua</h4>
+    <div class="water-controls">
+        <button class="btn-acqua" onclick="cambiaAcqua(-1)"><i class="fas fa-minus"></i></button>
+        <div class="stat-number" id="contatore-acqua">0</div>
+        <button class="btn-acqua" onclick="cambiaAcqua(1)"><i class="fas fa-plus"></i></button>
+    </div>
+    <!-- Aggiunta questa riga: -->
+    <p class="water-hint">(1 clic = 1 bicchiere da 150ml)</p>
+    <p id="totale-ml">0 ml totali</p>
+</div>
+    </div>
+    
+    <div class="routines-wrapper">
+    <h3 class="section-title">Le tue Schede</h3>
+
+    <div id="messaggio-vuoto" style="text-align: center; color: #888; padding: 20px;">
+        <p>Nessuna scheda presente</p>
+    </div>
+
+    </div>
+</div>
+    </div>
+
+        <div id="todolist" class="tab-content-interno">
+            <h2>Cose da fare</h2>
+            <div class="todo-container">
+                <div class="todo-input-area">
+                    <input type="text" id="nuovo-task" placeholder="Aggiungi una nuova attività...">
+                    <button onclick="aggiungiTask()"><i class="fas fa-plus"></i></button>
+                </div>
+                <ul id="lista-task" class="todo-list">
+                    </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="cambiaTab('home-tab', this)">
+            <span class="nav-icon">✨</span>
+            <span class="nav-text">Home</span>
+        </button>
+        <button class="nav-item" onclick="cambiaTab('uni-tab', this)">
+            <span class="nav-icon">🎓</span>
+            <span class="nav-text">Studio</span>
+        </button>
+        <button class="nav-item" onclick="cambiaTab('tracker-tab', this)">
+            <span class="nav-icon">⭐</span>
+            <span class="nav-text">Diario</span>
+        </button>
+    </nav>
+</div>
+   <!-- Libreria per i fuochi d'artificio -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Il tuo script (dovrebbe esserci già) -->
+    <script src="app.js"></script>
+</body>
+</html>

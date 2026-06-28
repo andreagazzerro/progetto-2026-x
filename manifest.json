@@ -1,0 +1,9 @@
+{
+  "name": "Per la mia Persona Stupenda",
+  "short_name": "Per Te ❤️",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#faf6f0",
+  "theme_color": "#ff8fa3",
+  "orientation": "portrait"
+}

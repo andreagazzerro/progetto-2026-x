@@ -1,0 +1,1221 @@
+:root {
+    /* Mappatura della tua palette */
+    --bg-color: #CCDBDC;        /* Alabaster Grey (Sfondo generale) */
+    --primary-color: #007EA7;    /* Cerulean (Bottoni e accenti principali) */
+    --primary-dark: #003249;     /* Deep Space Blue (Testo scuro e stati attivi) */
+    --accent-gold: #9AD1D4;      /* Frosted Blue (Corona d'alloro) */
+    --text-color: #003249;       /* Deep Space Blue (Testo principale) */
+    --card-bg: #FFFFFF;          /* Bianco puro per le schede */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding-bottom: 90px; /* Spazio per la barra in basso */
+    min-height: 100vh;
+}
+
+/* Gestione delle Schermate */
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stile Schermata Home */
+.hero {
+    text-align: center;
+    padding: 60px 10px 20px 10px;
+}
+
+.heart-icon {
+    font-size: 50px;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+h1 {
+    font-size: 26px;
+    margin-top: 15px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.quote-container {
+    background: var(--card-bg);
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(255, 143, 163, 0.15);
+    margin: 40px 0;
+    min-height: 150px;
+    display: table;
+    width: 100%;
+}
+
+#quote-text {
+    font-size: 18px;
+    line-height: 1.6;
+    font-style: italic;
+    color: #5c4d40;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Stile Università & Corona d'alloro */
+.header-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.header-section p {
+    font-size: 14px;
+    color: #8c7b6e;
+    margin-top: 5px;
+}
+
+/* Design Corona Aggiornato */
+.wreath-container {
+    display: block;
+    width: 280px;
+    height: 280px;
+    margin: 20px auto;
+    position: relative;
+    border: none; /* Rimosso il cerchio */
+}
+
+.leaf {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: 2px solid white; /* Contorno bianco */
+    border-radius: 50%;      /* Forma circolare */
+    transition: all 0.4s ease;
+}
+
+.leaf.active {
+    background-color: #2a9d8f; /* Verde pieno quando inserisci l'esame */
+    border-color: #2a9d8f;
+    transform: scale(1.2);
+}
+
+/* Checkbox pulita */
+.checkbox-wrapper {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-wrapper input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+}
+
+.goal-label {
+    margin-left: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.counter-box {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.action-box {
+    text-align: center;
+}
+
+.btn-add {
+    background-color: var(--accent-gold);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 25px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-reset {
+    background: transparent;
+    border: none;
+    color: #b5a496;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+/* Stile Tracciatori quotidiani */
+.tracker-list {
+    display: block;
+}
+
+.tracker-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    display: table;
+    width: 100%;
+}
+
+.tracker-info {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.tracker-emoji {
+    font-size: 30px;
+    display: table-cell;
+    padding-right: 15px;
+    vertical-align: middle;
+}
+
+.tracker-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.tracker-card p {
+    font-size: 13px;
+    color: #8c7b6e;
+}
+
+.btn-check {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    background: #f0e6df;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-color);
+    border-radius: 20px;
+    float: right;
+    margin-top: 5px;
+}
+
+/* Barra di Navigazione Inferiore (Unificata) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent; /* Di base trasparente */
+    padding: 8px 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    flex: 1;
+    min-height: 60px;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: #b5a496; /* Colore testo quando non è attivo */
+}
+
+/* Stile SOLO quando attivo */
+
+.nav-icon {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.nav-text {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.gallery-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.gallery-container img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+/* Aggiornamento per il contenitore obiettivo */
+.goal-container {
+    background: #80CED7;         /* Frosted Blue */
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    border: 1px solid #007EA7;
+    color: #003249;              /* Testo scuro per leggibilità */
+}
+
+/* Aggiornamento per il contenitore obiettivo */
+.goal-container {
+    background: #80CED7;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    border: 1px solid #007EA7;
+    color: #003249;
+}
+
+.goal-container h3 {
+    color: var(--primary-dark);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Nuova gestione pulita della checkbox */
+.checkbox-wrapper {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-wrapper input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+}
+
+.goal-label {
+    margin-left: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.uni-form {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.uni-form input { 
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 1px solid #ccc; 
+}
+
+.exam-list { 
+    list-style: none; 
+    margin-top: 20px; 
+}
+.exam-item { 
+    background: #fff; padding: 10px; margin-bottom: 8px; 
+    border-radius: 10px; display: flex; justify-content: space-between;
+    border-left: 5px solid #2a9d8f; 
+}
+
+.header-container {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.header-container h1 {
+    font-size: 32px;
+    color: #264653; 
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+/* --- Stili per la Tesi --- */
+.tesi-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: -310px;
+    margin-bottom: 25px;
+}
+
+.tesi-circle {
+    position: relative; /* Questo annulla l'absolute degli altri pallini */
+    width: 35px;        /* Lo facciamo leggermente più grande (35px invece di 25px) per dargli importanza */
+    height: 35px;
+    left: auto !important; /* Rimuove le coordinate JS */
+    top: auto !important;  /* Rimuove le coordinate JS */
+}
+
+.tesi-circle.laureato {
+    background-color: #007EA7; /* Blu per la laurea */
+    border-color: #007EA7;
+    transform: scale(1.3);
+}
+
+.checkbox-laurea {
+    font-weight: bold;
+    color: #264653;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-laurea input {
+    width: 18px;
+    height: 18px;
+    accent-color: #007EA7; /* Fa diventare blu anche il quadratino della spunta */
+}
+
+/* Rende la scritta e il quadratino opachi quando sono bloccati */
+.checkbox-laurea input:disabled,
+.checkbox-laurea input:disabled + text {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Dashboard Statistiche --- */
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Crea esattamente due colonne uguali */
+    justify-content: center;
+    gap: 20px;
+    margin: 25px auto; 
+    max-width: 320px; /* Tiene tutto compatto e ordinato al centro */
+}
+
+.stat-box {
+    background-color: white;
+    border: 2px solid #007EA7;
+    border-radius: 12px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Regola speciale per far allargare il riquadro della media */
+.stat-box.media-box {
+    grid-column: span 2; /* Dice al riquadro di espandersi per occupare 2 colonne */
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: #264653;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 26px;
+    color: #007EA7;
+    font-weight: bold;
+}
+
+/* --- Interazioni Bottone Aggiungi Esame --- */
+
+/* Assicuriamoci che il bottone base abbia una transizione morbida */
+.btn-add {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Effetto quando passi sopra col mouse (si scurisce) */
+.btn-add:hover {
+    background-color: #21867a; /* Un verde ottanio più scuro del #2a9d8f originale */
+}
+
+/* Effetto quando clicchi fisicamente (si scurisce ancora e si "schiaccia") */
+.btn-add:active {
+    background-color: #1a6b61; /* Ancora più scuro */
+    transform: scale(0.97);    /* Lo rimpicciolisce del 3% per simulare la pressione */
+}
+
+/* --- Azioni Esame (CFU + Crocetta) --- */
+.exam-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Stato normale: grigino */
+.btn-delete {
+    background: none;
+    border: none;
+    color: #b0b0b0; /* Grigio chiaro elegante */
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+/* Quando ci passi sopra col mouse: rosso e più grande */
+.btn-delete:hover {
+    color: #d62828; /* Rosso scuro */
+    transform: scale(1.3);
+}
+
+/* Quando clicchi: scatta leggermente per dare il feedback del tocco */
+.btn-delete:active {
+    color: #d62828;
+    transform: scale(1.1);
+}
+
+/* --- Popup Motivazionale (Centrato) --- */
+.toast {
+    visibility: hidden; 
+    min-width: 280px;
+    max-width: 80%;
+    background-color: #2a9d8f; /* Verde Ottanio */
+    color: white;
+    border-radius: 12px;
+    padding: 20px 25px;
+    
+    /* Centratura perfetta al centro dello schermo */
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 2000; /* Abbastanza alto da non essere MAI coperto */
+    
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    /* Layout per allineare testo e crocetta */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.toast.mostra {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- Crocetta Chiusura Popup --- */
+.btn-close-toast {
+    background: none;
+    border: none;
+    color: #e0e0e0; /* Un grigio chiaro che sta bene sul verde */
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.btn-close-toast:hover,
+.btn-close-toast:active {
+    color: #d62828; /* Rosso scuro come avevi chiesto */
+    transform: scale(1.3);
+}
+
+
+/* --- Stile Life Hub (Tabs) --- */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.tab-btn {
+    border: none;
+    background: none;
+    font-weight: bold;
+    color: #b0b0b0;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    color: #2a9d8f; /* Colore attivo (Ottanio) */
+    border-bottom: 2px solid #2a9d8f;
+}
+
+.tab-content {
+    display: none; /* Nasconde tutte le schede inizialmente */
+}
+
+.tab-content.active {
+    display: block; /* Mostra solo quella attiva */
+}
+
+
+/* --- Playlist --- */
+.playlist { list-style: none; padding: 0; margin-top: 20px;}
+.playlist button { width: 100%; padding: 10px; margin-bottom: 5px; border-radius: 8px; border: none; background: #f0f0f0; cursor: pointer; }
+
+/* --- Layout Player --- */
+#player-container { text-align: center; margin-top: 20px; padding: 15px; border-radius: 15px; background: white; }
+
+.player-hidden { 
+    display: none !important; 
+}
+
+.player-visible { 
+    display: block !important; 
+    text-align: center; 
+    margin-top: 20px; 
+    padding: 15px; 
+    background: white; 
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#album-art { 
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    margin-bottom: 10px; 
+    background-color: #f0f0f0; 
+    object-fit: cover;
+}
+
+
+#progress-bar { width: 100%; margin-top: 10px; }
+
+/* --- Gestione Pagine e Tabs --- */
+.pagina-contenuto { display: none; }
+.pagina-contenuto.active { display: block; }
+
+.tab-content-interno { display: none; }
+.tab-content-interno.active { display: block; }
+
+.life-hub {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around;
+    background: #fff;
+    padding: 15px 0;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    border: none;
+    background: none;
+    font-weight: bold;
+    color: #b0b0b0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    color: #2a9d8f;
+    border-bottom: 2px solid #2a9d8f;
+}
+
+
+/* Stile per i pulsanti del player */
+.controls button {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #2a9d8f; /* Colore uniforme per tutte le icone */
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;    /* Larghezza fissa per evitare salti grafici */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.controls button {
+    border: none;
+    background: none;
+    font-size: 24px; /* Dimensione icone */
+    color: #2a9d8f;  /* Colore in palette */
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.controls button:hover {
+    transform: scale(1.2); /* Piccolo effetto quando ci passi sopra */
+}
+
+
+
+
+/* --- To-Do List --- */
+.todo-container {
+    margin-top: 20px;
+}
+
+.todo-input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-input-area input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.todo-input-area input:focus {
+    border-color: #2a9d8f;
+}
+
+.todo-input-area button {
+    padding: 10px 15px;
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #2a9d8f;
+    transition: all 0.3s ease;
+}
+
+/* Stile quando si clicca per completare il task */
+.todo-list li.completato {
+    text-decoration: line-through;
+    color: #aaa;
+    border-left-color: #ccc;
+    background: #f0f0f0;
+}
+
+/* Cursore a forma di mano sul testo per far capire che è cliccabile */
+.todo-list li span {
+    flex: 1;
+    cursor: pointer;
+}
+
+/* Tasto cestino */
+.todo-list li .elimina-btn {
+    color: #e76f51; /* Un colore rosso/arancio in palette */
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+/* --- Calendario --- */
+.calendar-wrapper {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-top: 15px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #2a9d8f;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.2s;
+}
+
+.calendar-header button:hover {
+    transform: scale(1.2);
+}
+
+.calendar-grid .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    color: #b5a496;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* ECCO LA REGOLA MANCANTE CHE SISTEMA LA GRIGLIA */
+.calendar-grid .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/* Regola unificata e corretta per i singoli numeri */
+.calendar-grid .days div {
+    position: relative; /* FONDAMENTALE per il pallino */
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Giorni vuoti (per allineare l'inizio del mese) */
+.calendar-grid .days div.empty {
+    background: transparent;
+    cursor: default;
+}
+
+/* Effetto al passaggio del mouse */
+.calendar-grid .days div:not(.empty):hover {
+    background: #e0f2f1;
+}
+
+/* Il giorno di oggi */
+.calendar-grid .days div.oggi {
+    background: #2a9d8f;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(42, 157, 143, 0.4);
+}
+
+/* --- Area Note Sotto il Calendario --- */
+#sezione-note {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: none; /* Rimane nascosta finché non clicchi un giorno */
+    flex-direction: column;
+    gap: 10px;
+}
+
+#sezione-note.visibile {
+    display: flex;
+}
+
+#sezione-note h4 {
+    margin: 0;
+    color: #2a9d8f;
+    font-size: 16px;
+}
+
+#testo-nota {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+#testo-nota:focus {
+    border-color: #2a9d8f;
+}
+
+.btn-salva-nota {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+/* --- Selettore Colori --- */
+.color-picker-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.testo-colore {
+    font-size: 14px;
+    color: #444;
+    font-weight: 500;
+}
+
+/* Nascondiamo il "pallino" standard della casella di spunta radio */
+.color-picker-container input[type="radio"] {
+    display: none;
+}
+
+/* Creiamo i nostri cerchietti colorati */
+.color-picker-container label {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+/* Effetto quando un colore è selezionato */
+.color-picker-container input[type="radio"]:checked + label {
+    transform: scale(1.2);
+    border-color: #333; /* Bordo scuro per far capire che è selezionato */
+}
+
+/* --- Pallini Multipli nel Calendario --- */
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    position: absolute;
+    bottom: 3px;
+    width: 100%;
+}
+
+.calendar-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+
+/* --- Lista Note Multiple nel Calendario --- */
+.lista-note-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nota-item {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #e76f51; /* Riprende il colore del pallino */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.nota-item .elimina-nota-btn {
+    background: none;
+    border: none;
+    color: #e76f51;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.nota-item .elimina-nota-btn:hover {
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+/* --- Sezione Allenamenti: Tracciatore Settimanale --- */
+.weekly-tracker-container {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px; /* <--- Aggiungi questa riga */
+}
+
+.weekly-tracker-container h3 {
+    margin: 0;
+    color: #2a9d8f;
+    font-size: 18px;
+}
+
+.tracker-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin: 5px 0 15px 0;
+}
+
+.days-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+/* Stile base del cerchio (Non completato) */
+.day-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    background: white;
+    color: #b5a496;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Rende l'animazione fluida */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Stile del cerchio al passaggio del mouse */
+.day-circle:hover {
+    border-color: #ffb3c6;
+}
+
+/* Stile del cerchio quando l'allenamento è COMPLETATO */
+.day-circle.completato {
+    background-color: #ffb3c6; /* Il rosa pastello */
+    border-color: #ffb3c6;
+    color: white;
+    transform: scale(1.1); /* Lo ingrandisce leggermente per dare soddisfazione */
+    box-shadow: 0 4px 8px rgba(255, 179, 198, 0.4); /* Piccola ombra colorata */
+}
+
+
+
+
+
+/* --- Dashboard Quadrati (Mensile e Acqua) --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide lo spazio a metà esatta */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stat-square {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-square h4 {
+    margin: 0 0 10px 0;
+    color: #2a9d8f;
+    font-size: 15px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0;
+}
+
+.stat-square p {
+    margin: 0;
+    font-size: 12px;
+    color: #888;
+}
+
+.water-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-acqua {
+    background: #457b9d; /* Un bel blu acqua */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.btn-acqua:hover {
+    transform: scale(1.15);
+}
+
+/* --- Riquadrone Schede Allenamento --- */
+.routines-wrapper {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    color: #2a9d8f;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.workout-card {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.workout-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.icona-freccia {
+    color: #b5a496;
+    transition: transform 0.3s ease;
+}
+
+.workout-header.aperto .icona-freccia {
+    transform: rotate(180deg);
+}
+
+.workout-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.workout-content ul {
+    list-style-type: none;
+    padding: 15px;
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    border-top: 1px solid #eee;
+}
+
+.workout-content ul li {
+    margin-bottom: 8px;
+}
+
+.water-hint {
+    font-size: 10px !important; /* Testo più piccolo */
+    color: #a0a0a0 !important; /* Colore grigio chiaro */
+    margin: 5px 0 2px 0 !important;
+    font-style: italic;
+}
+
+
+#login-screen input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+}
+
+#login-screen button {
+    padding: 10px 20px;
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
