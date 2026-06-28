@@ -1,0 +1,6 @@
+# Ignora file di sistema e pesanti
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+.git/
